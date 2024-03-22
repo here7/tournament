@@ -5,23 +5,29 @@ import java.util.Map;
 public class Tournament {
     public Map<String, Team> dataMap = new HashMap<String, Team>();
 
-
     String printTable() {
-        return "PRINTING...";
+        String result = "Team       | MP |  W |  D |  L |  P";
+        System.out.println(result);
+        dataMap.entrySet().stream()
+                .forEach(entry -> System.out.println(
+                        entry.getKey() +
+                        "| " + (entry.getValue().getTotalWin() + entry.getValue().getTotalLoss() + entry.getValue().getTotalDraw()) +
+                        "| " + entry.getValue().getTotalWin() +
+                        "| " + entry.getValue().getTotalLoss() +
+                        "| " + entry.getValue().getTotalDraw() +
+                        "| " + entry.getValue().totalPoints(entry.getValue().getTotalWin())
+                ));
+
+        return result;
     }
 
-    public String applyResults(String resultString) {
+    void applyResults(String resultString) {
         String[] arrData = resultString.split("\n");
 
         for(int i = 0; i < arrData.length; i++){
             String[] lineData = arrData[i].split(";");
             addResultTeam(lineData[0], lineData[1], lineData[2]);
         }
-
-        dataMap.entrySet().stream()
-                .forEach(entry -> System.out.println("Key: " + entry.getKey() + ", Value: " + entry.getValue()));
-
-        return "HOLA";
     }
 
     public void addResultTeam(String firstTeam, String secondTeam, String resultGame){

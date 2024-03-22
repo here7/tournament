@@ -34,4 +34,8 @@ public class Team {
     public int getTotalDraw(){
         return this.draw;
     }
+
+    public int totalPoints(int numWins){
+        return numWins * 3;
+    }
 }
