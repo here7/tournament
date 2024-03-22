@@ -1,0 +1,13 @@
+*.swp
+*.beam
+.DS_Store
+.class
+build/
+.gradle/
+.idea/
+.exercism/
+*.iml
+bin/configlet
+bin/configlet.exe
+**/out
+*.class
