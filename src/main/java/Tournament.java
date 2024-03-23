@@ -1,27 +1,24 @@
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 
 
 public class Tournament {
- //   public Map<String, Team> dataMap = new HashMap<>();
     public LinkedHashMap<String, Team> dataMap = new LinkedHashMap<>();
 
     String printTable() {
         StringBuilder result = new StringBuilder("Team                           | MP |  W |  D |  L |  P\n");
 
-        dataMap.entrySet().stream()
-                .forEach(entry -> result.append(
-                        String.format("%-30s",entry.getKey()) +
-                        String.format(" | %2d",(entry.getValue().getTotalWin() + entry.getValue().getTotalLoss() + entry.getValue().getTotalDraw())) +
-                        String.format(" | %2d", entry.getValue().getTotalWin()) +
-                        String.format(" | %2d", entry.getValue().getTotalDraw()) +
-                        String.format(" | %2d", entry.getValue().getTotalLoss()) +
-                        String.format(" | %2d", entry.getValue().totalWinPoints(entry.getValue().getTotalWin()) +
-                                                entry.getValue().totalDrawPoints(entry.getValue().getTotalDraw())) +
-                        "\n"
-                ));
-        //System.out.println(result.toString().trim());
+        dataMap.entrySet()
+                .stream()
+                .sorted(Map.Entry.comparingByValue((o1, o2) -> o2.getScore() - o1.getScore()))
+                .forEach(o1 -> result.append(
+                        String.format("%-30s", o1.getValue().getName()) +
+                                String.format(" | %2d", (o1.getValue().getTotalWin() + o1.getValue().getTotalLoss() + o1.getValue().getTotalDraw())) +
+                                String.format(" | %2d", o1.getValue().getTotalWin()) +
+                                String.format(" | %2d", o1.getValue().getTotalDraw()) +
+                                String.format(" | %2d", o1.getValue().getTotalLoss()) +
+                                String.format(" | %2d", o1.getValue().getScore()) +
+                                "\n"));
+
         return result.toString();
     }
 
@@ -41,8 +38,8 @@ public class Tournament {
                 dataMap.computeIfAbsent(secondTeam, s -> new Team(secondTeam)).addLoss();
                 break;
             case "loss":
-                dataMap.computeIfAbsent(secondTeam, s -> new Team(secondTeam)).addWin();
                 dataMap.computeIfAbsent(firstTeam, s -> new Team(firstTeam)).addLoss();
+                dataMap.computeIfAbsent(secondTeam, s -> new Team(secondTeam)).addWin();
                 break;
             case "draw":
                 dataMap.computeIfAbsent(firstTeam, s -> new Team(firstTeam)).addDraw();
