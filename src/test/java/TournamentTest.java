@@ -48,7 +48,6 @@ public class TournamentTest {
                 "Allegoric Alaskans             |  1 |  0 |  0 |  1 |  0\n");
     }
 
-    @Disabled("Remove to run test")
     @Test
     public void aDrawIsOnePointEach() {
         tournament.applyResults("Allegoric Alaskans;Blithering Badgers;draw");
@@ -59,7 +58,6 @@ public class TournamentTest {
                 "Blithering Badgers             |  1 |  0 |  1 |  0 |  1\n");
     }
 
-    @Disabled("Remove to run test")
     @Test
     public void thereCanBeMoreThanOneMatch() {
         tournament.applyResults(
@@ -72,7 +70,6 @@ public class TournamentTest {
                 "Blithering Badgers             |  2 |  0 |  0 |  2 |  0\n");
     }
 
-    @Disabled("Remove to run test")
     @Test
     public void thereCanBeMoreThanOneWinner() {
         tournament.applyResults(
@@ -85,7 +82,6 @@ public class TournamentTest {
                 "Blithering Badgers             |  2 |  1 |  0 |  1 |  3\n");
     }
 
-    @Disabled("Remove to run test")
     @Test
     public void thereCanBeMoreThanTwoTeams() {
         tournament.applyResults(
@@ -100,7 +96,6 @@ public class TournamentTest {
                 "Courageous Californians        |  2 |  0 |  0 |  2 |  0\n");
     }
 
-    @Disabled("Remove to run test")
     @Test
     public void typicalInput() {
         tournament.applyResults(
@@ -119,7 +114,6 @@ public class TournamentTest {
                 "Courageous Californians        |  3 |  0 |  1 |  2 |  1\n");
     }
 
-    @Disabled("Remove to run test")
     @Test
     public void incompleteCompetition() {
         tournament.applyResults(
@@ -136,7 +130,6 @@ public class TournamentTest {
                 "Devastating Donkeys            |  1 |  0 |  0 |  1 |  0\n");
     }
 
-    @Disabled("Remove to run test")
     @Test
     public void tiesBrokenAlphabetically() {
         tournament.applyResults(

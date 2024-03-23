@@ -35,7 +35,7 @@ public class Team {
         return this.draw;
     }
 
-    public int totalPoints(int numWins){
-        return numWins * 3;
+    public int getScore(){
+        return (this.win * 3) + (this.draw * 1);
     }
 }
