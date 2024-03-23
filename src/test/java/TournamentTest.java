@@ -18,7 +18,6 @@ public class TournamentTest {
         assertThat(tournament.printTable()).isEqualTo("Team                           | MP |  W |  D |  L |  P\n");
     }
 
-    @Disabled("Remove to run test")
     @Test
     public void aWinIsThreePointsALossIsZeroPoints() {
         tournament.applyResults("Allegoric Alaskans;Blithering Badgers;win");
@@ -29,7 +28,6 @@ public class TournamentTest {
                 "Blithering Badgers             |  1 |  0 |  0 |  1 |  0\n");
     }
 
-    @Disabled("Remove to run test")
     @Test
     public void aWinCanAlsoBeExpressedAsALoss() {
         tournament.applyResults("Blithering Badgers;Allegoric Alaskans;loss");
@@ -40,7 +38,6 @@ public class TournamentTest {
                 "Blithering Badgers             |  1 |  0 |  0 |  1 |  0\n");
     }
 
-    @Disabled("Remove to run test")
     @Test
     public void aDifferentTeamCanWin() {
         tournament.applyResults("Blithering Badgers;Allegoric Alaskans;win");

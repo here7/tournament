@@ -3,22 +3,23 @@ import java.util.Map;
 
 
 public class Tournament {
-    public Map<String, Team> dataMap = new HashMap<String, Team>();
+    public Map<String, Team> dataMap = new HashMap<>();
 
     String printTable() {
-        String result = "Team       | MP |  W |  D |  L |  P";
-        System.out.println(result);
-        dataMap.entrySet().stream()
-                .forEach(entry -> System.out.println(
-                        entry.getKey() +
-                        "| " + (entry.getValue().getTotalWin() + entry.getValue().getTotalLoss() + entry.getValue().getTotalDraw()) +
-                        "| " + entry.getValue().getTotalWin() +
-                        "| " + entry.getValue().getTotalLoss() +
-                        "| " + entry.getValue().getTotalDraw() +
-                        "| " + entry.getValue().totalPoints(entry.getValue().getTotalWin())
-                ));
+        StringBuilder result = new StringBuilder("Team                           | MP |  W |  D |  L |  P\n");
 
-        return result;
+        dataMap.entrySet().stream()
+                .forEach(entry -> result.append(
+                        String.format("%-30s",entry.getKey()) +
+                        String.format(" | %2d",(entry.getValue().getTotalWin() + entry.getValue().getTotalLoss() + entry.getValue().getTotalDraw())) +
+                        String.format(" | %2d", entry.getValue().getTotalWin()) +
+                        String.format(" | %2d", entry.getValue().getTotalDraw()) +
+                        String.format(" | %2d", entry.getValue().getTotalLoss()) +
+                        String.format(" | %2d", entry.getValue().totalPoints(entry.getValue().getTotalWin())) +
+                        "\n"
+                ));
+        //System.out.println(result.toString().trim());
+        return result.toString();
     }
 
     void applyResults(String resultString) {
@@ -30,7 +31,7 @@ public class Tournament {
         }
     }
 
-    public void addResultTeam(String firstTeam, String secondTeam, String resultGame){
+     void addResultTeam(String firstTeam, String secondTeam, String resultGame){
         switch (resultGame){
             case "win":
                 dataMap.computeIfAbsent(firstTeam, s -> new Team(firstTeam)).addWin();
