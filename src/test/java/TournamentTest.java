@@ -48,7 +48,6 @@ public class TournamentTest {
                 "Allegoric Alaskans             |  1 |  0 |  0 |  1 |  0\n");
     }
 
-    @Disabled("Remove to run test")
     @Test
     public void aDrawIsOnePointEach() {
         tournament.applyResults("Allegoric Alaskans;Blithering Badgers;draw");
@@ -59,7 +58,6 @@ public class TournamentTest {
                 "Blithering Badgers             |  1 |  0 |  1 |  0 |  1\n");
     }
 
-    @Disabled("Remove to run test")
     @Test
     public void thereCanBeMoreThanOneMatch() {
         tournament.applyResults(
@@ -72,7 +70,6 @@ public class TournamentTest {
                 "Blithering Badgers             |  2 |  0 |  0 |  2 |  0\n");
     }
 
-    @Disabled("Remove to run test")
     @Test
     public void thereCanBeMoreThanOneWinner() {
         tournament.applyResults(

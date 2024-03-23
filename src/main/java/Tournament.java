@@ -1,9 +1,11 @@
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 
 public class Tournament {
-    public Map<String, Team> dataMap = new HashMap<>();
+ //   public Map<String, Team> dataMap = new HashMap<>();
+    public LinkedHashMap<String, Team> dataMap = new LinkedHashMap<>();
 
     String printTable() {
         StringBuilder result = new StringBuilder("Team                           | MP |  W |  D |  L |  P\n");
@@ -15,7 +17,8 @@ public class Tournament {
                         String.format(" | %2d", entry.getValue().getTotalWin()) +
                         String.format(" | %2d", entry.getValue().getTotalDraw()) +
                         String.format(" | %2d", entry.getValue().getTotalLoss()) +
-                        String.format(" | %2d", entry.getValue().totalPoints(entry.getValue().getTotalWin())) +
+                        String.format(" | %2d", entry.getValue().totalWinPoints(entry.getValue().getTotalWin()) +
+                                                entry.getValue().totalDrawPoints(entry.getValue().getTotalDraw())) +
                         "\n"
                 ));
         //System.out.println(result.toString().trim());
