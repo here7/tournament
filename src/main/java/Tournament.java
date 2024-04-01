@@ -6,7 +6,6 @@ public class Tournament {
     String printTable() {
         StringBuilder result = new StringBuilder("Team                           | MP |  W |  D |  L |  P\n");
 
-
         dataMap.entrySet()
                 .stream()
                 .sorted(Map.Entry.comparingByValue((o1, o2) -> {
